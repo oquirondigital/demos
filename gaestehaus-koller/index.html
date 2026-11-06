@@ -170,7 +170,8 @@ td.r,th.r{text-align:right;padding-right:0}
 /* Bewertungen */
 .rv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
 .rv .stars{color:#D9A520;font-size:15px}
-.rv .src{font:600 11px/1 var(--f-text);letter-spacing:.12em;text-transform:uppercase;color:var(--stein)}
+.rv .src{font:600 11px/1 var(--f-text);letter-spacing:.12em;text-transform:uppercase;color:var(--stein);text-decoration:none;padding:8px 0 8px 8px;margin:-8px 0}
+.rv a.src:hover{color:var(--geranie)}
 .rv .tr{color:var(--stein)}
 .rv{background:var(--weiss);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:14px;margin:0}
 .rv .sc{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--stein)}
@@ -473,10 +474,10 @@ html.anim [data-reveal="img"].is-in img{transform:scale(1)}
         </div>
 
         <div class="proof" aria-label="Bewertungen">
-          <div class="tile">
+          <a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=G%C3%A4stehaus+Koller+Eggerstandenstrasse+9+Appenzell" target="_blank" rel="noopener">
             <div class="num">5.0 <span class="stars" aria-hidden="true">★★★★★</span></div>
             <div class="lbl"><b>Google</b> · <span data-i18n="n24">24 Bewertungen</span></div>
-          </div>
+          </a>
           <a class="tile" href="https://www.tripadvisor.ch/Hotel_Review-g667654-d7159446-Reviews-Gaestehaus_Koller-Appenzell_Canton_of_Appenzell.html" target="_blank" rel="noopener">
             <div class="num">4.8 <span class="stars" aria-hidden="true">★★★★★</span></div>
             <div class="lbl"><b>Tripadvisor</b> · <span data-i18n="n12">12 Bewertungen</span></div>
@@ -665,27 +666,27 @@ html.anim [data-reveal="img"].is-in img{transform:scale(1)}
         <p class="body" data-i18n="v_p">Echte Bewertungen von Google und Tripadvisor im Wortlaut. Alle 24 Google-Bewertungen geben fünf Sterne.</p>
       </div>
       <div class="rv-grid">
-        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Google</span></div>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><a class="src" href="https://www.google.com/maps/search/?api=1&amp;query=G%C3%A4stehaus+Koller+Eggerstandenstrasse+9+Appenzell" target="_blank" rel="noopener">Google ↗</a></div>
           <blockquote data-i18n="g1">Wir waren mit dem Fahrrad 40 Tage in der Schweiz unterwegs. Diese Unterkunft war eine der schönsten. Ein herzlicher Empfang, sehr geschmackvoll eingerichtete Zimmer, ein liebevoll gerichtetes Frühstück, unter anderem mit selbst gemachtem Müsli und frischen Früchten.</blockquote>
           <figcaption><b>Claudia R.</b> · <span data-i18n="o_g1">Google-Rezension</span> · 07/2026<span class="tr" data-i18n="tr_g1"></span></figcaption></figure>
-        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Tripadvisor</span></div>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><a class="src" href="https://www.tripadvisor.ch/Hotel_Review-g667654-d7159446-Reviews-Gaestehaus_Koller-Appenzell_Canton_of_Appenzell.html" target="_blank" rel="noopener">Tripadvisor ↗</a></div>
           <blockquote data-i18n="t1">Ich habe hier so gut geschlafen, mit dem Klang der Kuhglocken vor dem Fenster und den sanften Hügeln ringsum. Nachts war es sehr ruhig, und mit nur vier Zimmern fühlte es sich schön und persönlich an.</blockquote>
           <figcaption><b>H. C.</b> · <span data-i18n="o_t1">Charleston, USA</span> · 06/2024<span class="tr" data-i18n="tr_t1"> · aus dem Englischen übersetzt</span></figcaption></figure>
-        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Google</span></div>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><a class="src" href="https://www.google.com/maps/search/?api=1&amp;query=G%C3%A4stehaus+Koller+Eggerstandenstrasse+9+Appenzell" target="_blank" rel="noopener">Google ↗</a></div>
           <blockquote data-i18n="g2">Freundliche Begrüssung mit einem Appenzeller, sehr angenehme Zimmer und ein ausgewogenes Frühstück! Wir können die Unterkunft sehr empfehlen.</blockquote>
           <figcaption><b>Roger H.</b> · <span data-i18n="o_g2">Google-Rezension</span> · 10/2026<span class="tr" data-i18n="tr_g2"></span></figcaption></figure>
-        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Tripadvisor</span></div>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><a class="src" href="https://www.tripadvisor.ch/Hotel_Review-g667654-d7159446-Reviews-Gaestehaus_Koller-Appenzell_Canton_of_Appenzell.html" target="_blank" rel="noopener">Tripadvisor ↗</a></div>
           <blockquote data-i18n="t2">Eine liebevoll hergerichtete stilvolle Unterkunft zum Wohlfühlen. Das Frühstück war ausgezeichnet, abwechslungsreich, gesund und mit allem, was man sich wünscht. Perfektes selbstgemachtes Müsli!!!</blockquote>
           <figcaption><b>Jörg T.</b> · <span data-i18n="o_t2">Rotenburg an der Fulda, Deutschland</span> · 09/2026<span class="tr" data-i18n="tr_t2"></span></figcaption></figure>
-        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Tripadvisor</span></div>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><a class="src" href="https://www.tripadvisor.ch/Hotel_Review-g667654-d7159446-Reviews-Gaestehaus_Koller-Appenzell_Canton_of_Appenzell.html" target="_blank" rel="noopener">Tripadvisor ↗</a></div>
           <blockquote data-i18n="t3">Karin und Stefan sind wunderbare Gastgeber! Unser Zimmer war sauber, hell und gemütlich, mit einem wunderbaren Bett und schöner Aussicht. Auch das Frühstück war köstlich. Wir kommen bestimmt wieder.</blockquote>
           <figcaption><b>Lynn W.</b> · <span data-i18n="o_t3">Arizona, USA</span> · 07/2025<span class="tr" data-i18n="tr_t3"> · aus dem Englischen übersetzt</span></figcaption></figure>
-        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Google</span></div>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><a class="src" href="https://www.google.com/maps/search/?api=1&amp;query=G%C3%A4stehaus+Koller+Eggerstandenstrasse+9+Appenzell" target="_blank" rel="noopener">Google ↗</a></div>
           <blockquote data-i18n="g3">Sehr freundlich, sehr sauber und toll eingerichtet, das Frühstück war auch sehr lecker. «mhhhh das Birchermüesli» Sehr gerne wieder.</blockquote>
           <figcaption><b>Beat K.</b> · <span data-i18n="o_g3">Google-Rezension</span> · 2025<span class="tr" data-i18n="tr_g3"></span></figcaption></figure>
       </div>
       <div class="rv-sum">
-        <a href="https://share.google/jakTur1F478XE5AVr" target="_blank" rel="noopener"><span class="stars">★★★★★</span><b>5.0</b> Google · <span data-i18n="n24">24 Bewertungen</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=G%C3%A4stehaus+Koller+Eggerstandenstrasse+9+Appenzell" target="_blank" rel="noopener"><span class="stars">★★★★★</span><b>5.0</b> Google · <span data-i18n="n24">24 Bewertungen</span></a>
         <a href="https://www.tripadvisor.ch/Hotel_Review-g667654-d7159446-Reviews-Gaestehaus_Koller-Appenzell_Canton_of_Appenzell.html" target="_blank" rel="noopener"><b>4.8</b> Tripadvisor · <span data-i18n="n12">12 Bewertungen</span></a>
         <a href="https://bnb.ch/en/bb-gaestehaus-koller-2473/" target="_blank" rel="noopener"><b>bnb.ch</b> · <span data-i18n="all">alle Bewertungen</span></a>
       </div>
