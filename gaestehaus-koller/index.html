@@ -66,7 +66,7 @@ a{color:inherit}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;background:var(--tanne);color:var(--weiss);overflow:hidden}
-.hero-img{position:absolute;inset:0}
+.hero-img{position:absolute;inset:0;overflow:hidden}
 .hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 62%;display:block;animation:settle 1.8s cubic-bezier(.2,.7,.2,1) both}
 @keyframes settle{from{transform:scale(1.05)}to{transform:scale(1)}}
 .hero-img::after{content:"";position:absolute;inset:0;background:
@@ -938,7 +938,7 @@ document.addEventListener("DOMContentLoaded",function(){m();var b=document.query
     // Parallax
     var heroImg=document.querySelector(".hero-img img"),bandImg=document.querySelector(".band img"),ticking=false;
     function par(){ticking=false;var y=scrollY,h=innerHeight;
-      if(y<h*1.2)heroImg.style.transform="translateY("+Math.min(y*.12,60)+"px) scale(1.14)";
+      if(y<h*1.2&&innerWidth>720)heroImg.style.transform="translateY("+Math.min(y*.12,60)+"px) scale(1.14)";
       var br=bandImg.parentNode.getBoundingClientRect();if(br.bottom>0&&br.top<h){var c=(br.top+br.height/2-h/2)/h;bandImg.style.transform="translateY("+(c*-9)+"%)"}}
     heroImg.addEventListener("animationend",function(){heroImg.style.animation="none";heroImg.style.transition="transform .2s linear";addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(par)}},{passive:true});par()});
   }
