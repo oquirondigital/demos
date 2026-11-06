@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gästehaus Koller</title>
+
+<meta name="robots" content="noindex, nofollow">
+<!-- Preview: Google Fonts via CDN. Produktion: Fonts selbst hosten (DSGVO/DSG). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: Fassadenfoto randlos, Headline unten links auf dem dunklen Holz, Bewertungen als Glas-Kacheln unten rechts;
+   darunter ein Tannengrün-Band mit den 4 Fakten. Mobil: Foto 4:5, Text auf Tanne, fixe Buchungsleiste unten.
+   Bewusst nur ein (helles) Erscheinungsbild — fotogeführte Hotelseite. */
+:root{
+  --kalk:#F0F1EB;      /* Kalkputz, leicht grünstichig */
+  --tanne:#1C2823;     /* Tannengrün, fast schwarz */
+  --tanne-2:#24342D;
+  --holz:#8A5734;      /* Altholz */
+  --geranie:#C3352A;   /* Geranien am Balkon — nur für Aktionen */
+  --geranie-d:#A62B21;
+  --salbei:#B9C4B1;
+  --stein:#5B655F;
+  --weiss:#FFFFFF;
+  --f-display:"Gloock","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --f-text:"Schibsted Grotesk","Helvetica Neue",Arial,system-ui,sans-serif;
+  --r:10px;
+  --wrap:1200px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+img{max-width:100%;height:auto}
+html{scroll-behavior:smooth}
+body{background:var(--kalk);color:var(--tanne);font:16px/1.6 var(--f-text);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--tanne)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--geranie);outline-offset:3px;border-radius:4px}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:var(--wrap);margin-inline:auto;width:100%}
+.eyebrow{font:600 12px/1.3 var(--f-text);letter-spacing:.16em;text-transform:uppercase}
+
+/* ---------- Header ---------- */
+.hdr{position:absolute;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;color:var(--weiss);transition:background .3s,box-shadow .3s}
+.hdr.solid{position:fixed;background:color-mix(in srgb,var(--tanne) 94%,transparent);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgb(255 255 255 / .06)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;padding-block:18px}
+.hdr.solid .wrap{padding-block:12px}
+.mark{display:flex;flex-direction:column;text-decoration:none;line-height:1;gap:6px;margin-right:auto}
+.mark b{font:400 19px/1 var(--f-display);letter-spacing:.2em;text-transform:uppercase}
+.mark span{font:500 10px/1 var(--f-text);letter-spacing:.42em;text-transform:uppercase;opacity:.75}
+.nav{display:flex;gap:26px}
+.nav a{font:500 14px/1 var(--f-text);text-decoration:none;opacity:.88}
+.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.lang{display:flex;border:1px solid rgb(255 255 255 / .35);border-radius:999px;padding:2px}
+.lang button{all:unset;cursor:pointer;font:600 11px/1 var(--f-text);letter-spacing:.1em;padding:7px 10px;border-radius:999px;color:var(--weiss);opacity:.7}
+.lang button[aria-pressed="true"]{background:var(--weiss);color:var(--tanne);opacity:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font:600 15px/1 var(--f-text);padding:15px 22px;border-radius:999px;transition:background .2s,transform .2s;white-space:nowrap}
+.btn-go{background:var(--geranie);color:var(--weiss)}
+.btn-go:hover{background:var(--geranie-d)}
+.btn-ghost{color:var(--weiss);box-shadow:inset 0 0 0 1px rgb(255 255 255 / .55)}
+.btn-ghost:hover{background:rgb(255 255 255 / .1)}
+.btn svg{width:16px;height:16px}
+.hdr .btn{padding:12px 18px;font-size:14px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;background:var(--tanne);color:var(--weiss);overflow:hidden}
+.hero-img{position:absolute;inset:0}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 62%;display:block;animation:settle 1.8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes settle{from{transform:scale(1.05)}to{transform:scale(1)}}
+.hero-img::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,rgb(18 26 22 / .86) 0%,rgb(18 26 22 / .62) 34%,rgb(18 26 22 / .1) 58%,rgb(18 26 22 / 0) 70%),
+  linear-gradient(0deg,rgb(18 26 22 / .7) 0%,rgb(18 26 22 / 0) 45%),
+  linear-gradient(180deg,rgb(18 26 22 / .55) 0%,rgb(18 26 22 / 0) 22%)}
+.hero-in{position:relative}
+.hero-grid{min-height:min(86vh,800px);display:grid;grid-template-columns:minmax(0,1fr);align-content:end;gap:28px;padding-block:140px 56px}
+.hero-copy{display:flex;flex-direction:column;gap:22px;max-width:620px}
+.hero-copy .eyebrow{color:var(--salbei)}
+h1{font:400 clamp(36px,4.6vw,62px)/1.04 var(--f-display);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.lead{font-size:18px;line-height:1.55;margin:0;max-width:52ch;color:rgb(255 255 255 / .86)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.price{font-size:14px;color:rgb(255 255 255 / .75);margin:0}
+.price strong{color:var(--weiss);font-weight:600;font-variant-numeric:tabular-nums}
+
+.proof{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;justify-self:start;width:100%;max-width:420px}
+.tile{background:rgb(255 255 255 / .1);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgb(255 255 255 / .18);border-radius:var(--r);padding:16px 16px 14px;display:flex;flex-direction:column;gap:6px;text-decoration:none}
+a.tile:hover{background:rgb(255 255 255 / .16)}
+.tile .num{font:400 34px/1 var(--f-display);font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:8px}
+.stars{font:14px/1 var(--f-text);letter-spacing:2px;color:#F2C14E}
+.tile .lbl{font-size:13px;line-height:1.35;color:rgb(255 255 255 / .78)}
+.tile .lbl b{color:var(--weiss);font-weight:600}
+.quote{grid-column:1/-1;flex-direction:row;align-items:flex-start;gap:12px}
+.quote p{margin:0;font-size:14px;line-height:1.5;color:rgb(255 255 255 / .9)}
+.quote cite{display:block;margin-top:6px;font-style:normal;font-size:12px;color:rgb(255 255 255 / .62)}
+.quote .q{font:400 40px/.7 var(--f-display);color:var(--salbei)}
+
+/* ---------- Fakten-Band ---------- */
+.facts{background:var(--tanne-2);color:var(--weiss)}
+.facts ul{list-style:none;margin-block:0;padding-inline:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding-block:26px}
+.facts li{display:flex;gap:14px;align-items:center;padding:6px 22px;border-left:1px solid rgb(255 255 255 / .1);min-width:0}
+.facts li:first-child{border-left:0;padding-left:0}
+.facts svg{flex:none;width:28px;height:28px;stroke:var(--salbei);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.facts b{display:block;font-weight:600;font-size:15px;line-height:1.3}
+.facts span{display:block;font-size:13px;line-height:1.4;color:rgb(255 255 255 / .62)}
+
+/* ---------- Sektionen ---------- */
+.sec{padding-block:clamp(64px,9vw,120px)}
+.sec .eyebrow{color:var(--holz)}
+h2{font:400 clamp(30px,3.8vw,48px)/1.08 var(--f-display);margin:12px 0 0;text-wrap:balance;letter-spacing:-.005em}
+h3{font:600 18px/1.3 var(--f-text);margin:0}
+.body{color:var(--stein);max-width:58ch;margin:0;font-size:17px;line-height:1.65}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 56px;align-items:end;margin-bottom:44px}
+.link{font-weight:600;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.link:hover{color:var(--geranie)}
+
+/* Gastgeber */
+.hosts .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,88px);align-items:center}
+.hosts figure{margin:0;position:relative}
+.hosts figure img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:30% 50%;border-radius:var(--r)}
+.hosts figcaption{position:absolute;left:16px;bottom:16px;background:var(--kalk);padding:10px 14px;border-radius:8px;font-size:13px;line-height:1.35;max-width:calc(100% - 32px)}
+.hosts-copy{display:flex;flex-direction:column;gap:20px}
+.since{display:flex;gap:28px;flex-wrap:wrap;padding-top:8px}
+.since div{display:flex;flex-direction:column;gap:2px}
+.since b{font:400 40px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.since span{font-size:13px;color:var(--stein)}
+.greet{font:400 26px/1.2 var(--f-display);color:var(--holz);margin:0}
+
+/* Zimmer */
+.mosaic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,230px);gap:10px}
+.mosaic button{all:unset;cursor:zoom-in;position:relative;overflow:hidden;border-radius:var(--r);display:block}
+.mosaic button:first-child{grid-column:span 2;grid-row:span 2}
+.mosaic button:nth-child(6),.mosaic button:nth-child(7){grid-column:span 2}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.mosaic button:hover img{transform:scale(1.03)}
+.mosaic button:focus-visible{outline:2px solid var(--geranie);outline-offset:3px}
+.rooms-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,64px);margin-top:48px;align-items:start}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:14px 12px 14px 0;border-bottom:1px solid color-mix(in srgb,var(--tanne) 13%,transparent);vertical-align:top}
+th{font:600 12px/1.3 var(--f-text);letter-spacing:.12em;text-transform:uppercase;color:var(--stein)}
+td:first-child{font-weight:600}
+td.r,th.r{text-align:right;padding-right:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0;list-style:none}
+.chips li{font-size:13px;padding:7px 12px;border-radius:999px;background:color-mix(in srgb,var(--salbei) 40%,transparent)}
+.pricebox{background:var(--weiss);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 0 color-mix(in srgb,var(--tanne) 8%,transparent),0 12px 32px -20px rgb(28 40 35 / .35)}
+.pricebox .big{font:400 44px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.pricebox .big small{font:500 14px/1 var(--f-text);color:var(--stein);margin-left:6px}
+.pricebox ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:15px}
+.pricebox li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed color-mix(in srgb,var(--tanne) 15%,transparent);padding-bottom:8px}
+.pricebox li span:last-child{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:13px;color:var(--stein);margin:0;line-height:1.5}
+
+/* Frühstück */
+.bf{background:var(--tanne);color:var(--weiss)}
+.bf .eyebrow{color:var(--salbei)}
+.bf .body{color:rgb(255 255 255 / .74)}
+.bf .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:center}
+.bf-copy{display:flex;flex-direction:column;gap:20px}
+.bf-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.bf-list li{display:flex;gap:12px;align-items:baseline;font-size:16px}
+.bf-list li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--geranie);transform:translateY(-2px)}
+.bf-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,clamp(150px,15vw,220px));gap:10px}
+.bf-photos img{width:100%;height:100%;object-fit:cover;border-radius:var(--r);display:block}
+.bf-photos img:nth-child(1){grid-column:span 2}
+.bf-photos img:nth-child(3){grid-row:span 2}
+.bf-photos img:nth-child(2){grid-column:1;grid-row:2}
+.bf-photos img:nth-child(4){grid-column:2;grid-row:2}
+.bf-photos img:nth-child(3){grid-column:3;grid-row:1/3}
+
+/* Bewertungen */
+.rv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
+.rv .stars{color:#D9A520;font-size:15px}
+.rv .src{font:600 11px/1 var(--f-text);letter-spacing:.12em;text-transform:uppercase;color:var(--stein)}
+.rv .tr{color:var(--stein)}
+.rv{background:var(--weiss);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:14px;margin:0}
+.rv .sc{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--stein)}
+.rv .sc b{font:400 26px/1 var(--f-display);color:var(--tanne);font-variant-numeric:tabular-nums}
+.rv blockquote{margin:0;font-size:16px;line-height:1.55;flex:1}
+.rv figcaption{font-size:13px;color:var(--stein);border-top:1px solid color-mix(in srgb,var(--tanne) 10%,transparent);padding-top:12px}
+.rv figcaption b{color:var(--tanne)}
+.rv-sum{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.rv-sum .stars{color:#D9A520}
+.rv-sum a{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:14px;padding:10px 16px;border-radius:999px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--tanne) 20%,transparent)}
+.rv-sum a:hover{background:color-mix(in srgb,var(--tanne) 6%,transparent)}
+.rv-sum b{font-variant-numeric:tabular-nums}
+
+/* Lage */
+.loc .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:start}
+.dist{list-style:none;margin:0;padding:0;display:grid}
+.dist li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:baseline;padding:20px 0;border-bottom:1px solid color-mix(in srgb,var(--tanne) 13%,transparent)}
+.dist li:first-child{border-top:1px solid color-mix(in srgb,var(--tanne) 13%,transparent)}
+.dist b{font:400 40px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.dist b small{font:500 13px/1 var(--f-text);color:var(--stein);margin-left:4px}
+.dist span{font-size:16px}
+.dist span small{display:block;color:var(--stein);font-size:13px}
+.loc-copy{display:flex;flex-direction:column;gap:20px}
+.park{margin:0;position:relative}
+.park img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:50% 70%;border-radius:var(--r)}
+.park figcaption{position:absolute;left:12px;bottom:12px;background:var(--kalk);padding:8px 12px;border-radius:8px;font-size:13px}
+
+/* Praktisches */
+.faq{background:color-mix(in srgb,var(--salbei) 22%,var(--kalk))}
+.faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+details{border-bottom:1px solid color-mix(in srgb,var(--tanne) 14%,transparent)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-weight:600;font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 24px/1 var(--f-display);color:var(--holz);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 20px;color:var(--stein);font-size:15px;line-height:1.6;max-width:60ch}
+
+/* Anfrage-Formular */
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;background:var(--weiss);padding:clamp(20px,3vw,32px);border-radius:var(--r)}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:13px;font-weight:600}
+.field input,.field select,.field textarea{font:inherit;font-size:16px;color:var(--tanne);background:var(--kalk);border:1px solid color-mix(in srgb,var(--tanne) 16%,transparent);border-radius:8px;padding:12px;width:100%;min-width:0}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--geranie);outline-offset:1px}
+.form .btn{grid-column:1/-1;border:0;cursor:pointer}
+.form-msg{grid-column:1/-1;margin:0;font-size:14px;padding:12px 14px;border-radius:8px;background:color-mix(in srgb,var(--salbei) 45%,transparent)}
+
+/* Footer */
+.foot{background:var(--tanne);color:rgb(255 255 255 / .7);font-size:14px}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;padding-block:36px}
+.foot .mark{color:var(--weiss);margin:0}
+.foot p{margin:0}
+.foot .legal{display:flex;gap:20px}
+
+/* Lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);max-height:90vh}
+dialog.lb::backdrop{background:rgb(18 26 22 / .88)}
+dialog.lb img{display:block;max-width:100%;max-height:84vh;border-radius:8px}
+dialog.lb button{all:unset;cursor:pointer;position:absolute;top:10px;right:10px;background:var(--weiss);color:var(--tanne);border-radius:999px;padding:8px 14px;font:600 13px/1 var(--f-text)}
+
+/* ---------- Kontakt (Anker) ---------- */
+.contact{padding-block:64px 120px}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.contact h2{font:400 clamp(28px,3.4vw,40px)/1.1 var(--f-display);margin:12px 0 0;text-wrap:balance}
+.contact .eyebrow{color:var(--holz)}
+.cards{display:grid;gap:10px}
+.c-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid color-mix(in srgb,var(--tanne) 14%,transparent);flex-wrap:wrap}
+.c-row small{display:block;color:var(--stein);font-size:13px}
+.c-row .val{font-size:18px;font-weight:600;user-select:all;font-variant-numeric:tabular-nums}
+.copy{all:unset;cursor:pointer;font:600 13px/1 var(--f-text);padding:10px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--tanne) 25%,transparent)}
+.copy:hover{background:color-mix(in srgb,var(--tanne) 6%,transparent)}
+.draft{font-size:12px;color:var(--stein);margin-top:28px}
+
+/* ---------- Mobile Buchungsleiste ---------- */
+.mbar{display:none}
+
+@media (min-width:981px){
+  .hero-img{left:34%;overflow:hidden}
+  .hero-img img{object-position:64% 40%}
+  .hero-img::after{background:
+    linear-gradient(90deg,var(--tanne) 0%,rgb(28 40 35 / .78) 14%,rgb(28 40 35 / .25) 30%,rgb(28 40 35 / 0) 44%),
+    linear-gradient(180deg,rgb(18 26 22 / .5) 0%,rgb(18 26 22 / 0) 22%)}
+  .hero-copy{max-width:min(560px,40vw)}
+  .proof{max-width:min(420px,36vw)}
+}
+@media (max-width:980px){
+  .nav{display:none}
+  .rv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .proof{justify-self:start;max-width:520px}
+}
+@media (max-width:720px){
+  .hdr .btn{display:none}
+  .hdr .wrap{padding-block:14px}
+  .mark b{font-size:16px}
+  .hero{background:var(--tanne)}
+  .hero-img{position:relative;aspect-ratio:5/4;max-width:100%}
+  .hero-img img{object-position:64% 45%}
+  .hero-img::after{background:linear-gradient(180deg,rgb(18 26 22 / .55) 0%,rgb(18 26 22 / 0) 25%,rgb(18 26 22 / 0) 60%,var(--tanne) 100%)}
+  .hero-in{margin-top:-72px}
+  .hero-grid{min-height:0;padding-block:0 36px}
+  h1{font-size:clamp(34px,9.6vw,44px)}
+  .lead{font-size:16px}
+  .cta-row .btn{flex:1 1 100%}
+  .facts ul{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px;padding-block:22px}
+  .facts li{padding:0;border:0;align-items:flex-start}
+  .facts svg{width:24px;height:24px}
+  .contact{padding-block:48px 140px}
+  .contact .wrap{grid-template-columns:minmax(0,1fr);gap:20px}
+  .sec-head,.hosts .wrap,.rooms-grid,.bf .wrap,.loc .wrap,.faq-grid{grid-template-columns:minmax(0,1fr)}
+  .sec-head{margin-bottom:28px}
+  .hosts figure img{aspect-ratio:4/3}
+  .mosaic{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:140px}
+  .mosaic button:first-child{grid-column:span 2;grid-row:span 2}
+  .mosaic button:nth-child(6){grid-column:span 2}
+  .mosaic button:nth-child(7){grid-column:span 2}
+  .rv-grid{grid-template-columns:minmax(0,1fr)}
+  .bf-photos{grid-template-rows:repeat(2,130px)}
+  .form{grid-template-columns:minmax(0,1fr)}
+  .dist li{grid-template-columns:80px minmax(0,1fr)}
+  .dist b{font-size:32px}
+  .foot .wrap{padding-bottom:110px}
+  .mbar{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:55;
+    background:color-mix(in srgb,var(--kalk) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-top:1px solid color-mix(in srgb,var(--tanne) 12%,transparent);
+    padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+  .mbar .btn{padding:14px 12px;font-size:15px}
+  .mbar .btn-call{background:var(--weiss);color:var(--tanne);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--tanne) 22%,transparent)}
+}
+@media (max-width:380px){ .facts ul{grid-template-columns:minmax(0,1fr)} }
+@media (prefers-reduced-motion:reduce){ .hero-img img{animation:none} html{scroll-behavior:auto} }
+
+/* Ankommen */
+.ph{margin:0;overflow:hidden;border-radius:var(--r)}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.arrive-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:auto 1fr;gap:16px clamp(24px,4vw,56px)}
+.arrive .a1{grid-row:1/3;aspect-ratio:4/3}
+.arrive .a1 img{object-position:60% 50%}
+.arrive-copy{display:flex;flex-direction:column;gap:18px;align-self:end;padding-bottom:12px}
+.arrive-copy h2{font-size:clamp(30px,3.4vw,44px)}
+.arrive-small{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-self:end}
+.arrive-small .ph{aspect-ratio:4/5}
+
+/* Zimmer-Reel */
+.sec{overflow-x:clip}
+.reel{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;margin-right:calc(50% - 50vw);padding-right:max(16px,calc(50vw - 50%));scrollbar-width:none;outline:none}
+.reel::-webkit-scrollbar{display:none}
+.slide{flex:0 0 clamp(270px,58vw,820px);margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px}
+.slide button,.baths button{all:unset;cursor:zoom-in;display:block;overflow:hidden;border-radius:var(--r)}
+.slide button:focus-visible,.baths button:focus-visible{outline:2px solid var(--geranie);outline-offset:3px}
+.slide img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.slide button:hover img,.baths button:hover img{transform:scale(1.035)}
+.slide figcaption{font-size:14px;color:var(--stein)}
+.reel-ctrl{display:flex;align-items:center;gap:10px;justify-content:flex-end;margin-top:18px}
+.count{font-size:13px;color:var(--stein);font-variant-numeric:tabular-nums;margin-right:8px}
+.arrow{all:unset;cursor:pointer;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--tanne) 22%,transparent);transition:background .2s}
+.arrow:hover{background:var(--tanne);color:var(--weiss)}
+.arrow:focus-visible{outline:2px solid var(--geranie);outline-offset:2px}
+.arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.baths{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:12px;margin-top:56px;align-items:end}
+.baths figure{margin:0}
+.baths img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.baths-copy{display:flex;flex-direction:column;gap:10px;padding-bottom:8px;padding-right:12px}
+
+/* Frühstück-Raster */
+.bf-wrap{display:block!important}
+.bf-copy{display:flex;flex-direction:column;gap:18px}
+.bf-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,clamp(150px,17vw,250px));gap:12px}
+.bf-grid img{width:100%;height:100%;object-fit:cover;border-radius:var(--r);display:block}
+.bf-grid img:nth-child(1){grid-column:1/3;grid-row:1/3}
+.bf-grid img:nth-child(2){grid-column:3/5;grid-row:1}
+.bf-grid img:nth-child(3){grid-column:3;grid-row:2}
+.bf-grid img:nth-child(4){grid-column:4;grid-row:2}
+
+/* Bildband Terrasse */
+.band{position:relative;height:clamp(380px,58vw,680px);overflow:hidden;background:var(--tanne);color:var(--weiss)}
+.band img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;object-position:40% 55%;will-change:transform}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgb(18 26 22 / .78) 0%,rgb(18 26 22 / .2) 45%,rgb(18 26 22 / 0) 70%)}
+.band-q{position:absolute;left:0;right:0;bottom:0;z-index:1;padding-block:0 clamp(28px,5vw,64px)}
+.band-q blockquote{margin:0;font:400 clamp(30px,4.6vw,60px)/1.08 var(--f-display);max-width:16ch;text-wrap:balance}
+.band-q p{margin:14px 0 0;font-size:14px;color:rgb(255 255 255 / .8)}
+
+/* Lightbox nav */
+dialog.lb .lb-nav{position:absolute;inset:auto 10px 10px auto;display:flex;gap:8px}
+dialog.lb .lb-nav button{position:static}
+
+@media (max-width:720px){
+  .arrive-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:auto}
+  .arrive .a1{grid-row:auto;order:2}
+  .arrive-copy{order:1;padding-bottom:0}
+  .arrive-small{order:3}
+  .slide{flex-basis:84vw}
+  .baths{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:40px}
+  .baths-copy{grid-column:1/-1;padding-right:0}
+  .bf-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:200px 130px 130px}
+  .bf-grid img:nth-child(1){grid-column:1/3;grid-row:1}
+  .bf-grid img:nth-child(2){grid-column:1/3;grid-row:2}
+  .bf-grid img:nth-child(3){grid-column:1;grid-row:3}
+  .bf-grid img:nth-child(4){grid-column:2;grid-row:3}
+  .band{height:440px}
+}
+
+@media (max-width:720px){
+  /* Zimmertabelle als Liste */
+  #zimmer thead{display:none}
+  #zimmer table,#zimmer tbody{display:block}
+  #zimmer tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:14px 0;border-bottom:1px solid color-mix(in srgb,var(--tanne) 13%,transparent)}
+  #zimmer td{border:0;padding:0}
+  #zimmer td:nth-child(1){grid-column:1;grid-row:1}
+  #zimmer td:nth-child(2){grid-column:1;grid-row:2;color:var(--stein);font-size:14px}
+  #zimmer td:nth-child(3){grid-column:2;grid-row:1;text-align:right}
+  #zimmer td:nth-child(4){grid-column:2;grid-row:2;text-align:right;color:var(--stein);font-size:14px}
+  #zimmer td:nth-child(4)::after{content:" Pers."}
+  /* Touch-Ziele und Mindestschrift */
+  .lang button{padding:11px 13px;font-size:12px}
+  .copy{padding:13px 16px}
+  .link{display:inline-block;padding-block:8px}
+  .rv figcaption,.slide figcaption,.note,.tile .lbl,.facts span,.since span,.dist span small,.c-row small,.band-q p,.hosts figcaption{font-size:13px}
+  .eyebrow{font-size:12px}
+  .pricebox .big small{display:block;margin:8px 0 0}
+}
+
+/* ---------- Bewegung ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes drop{from{transform:translateY(-100%)}to{transform:none}}
+.hero-copy>*{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.hero-copy>:nth-child(1){animation-delay:.15s}.hero-copy>:nth-child(2){animation-delay:.3s}
+.hero-copy>:nth-child(3){animation-delay:.48s}.hero-copy>:nth-child(4){animation-delay:.62s}.hero-copy>:nth-child(5){animation-delay:.74s}
+.proof>*{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.proof>:nth-child(1){animation-delay:.85s}.proof>:nth-child(2){animation-delay:.97s}.proof>:nth-child(3){animation-delay:1.1s}
+.hdr{animation:rise .8s .05s cubic-bezier(.2,.7,.2,1) both}
+.hdr.solid{animation:drop .45s cubic-bezier(.2,.7,.2,1) both}
+.hero-img img{will-change:transform}
+html.anim [data-reveal]{opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+html.anim [data-reveal="img"]{opacity:1;transform:none;clip-path:inset(14% 0 0 0 round var(--r));transition:clip-path 1.2s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+html.anim [data-reveal="img"] img{transform:scale(1.12);transition:transform 1.6s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+html.anim [data-reveal].is-in{opacity:1;transform:none}
+html.anim [data-reveal="img"].is-in{clip-path:inset(0 0 0 0 round var(--r))}
+html.anim [data-reveal="img"].is-in img{transform:scale(1)}
+.mosaic button:hover img{transform:scale(1.04)!important}
+.rv{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.rv:hover{transform:translateY(-4px);box-shadow:0 18px 40px -24px rgb(28 40 35 / .45)}
+.facts li svg{transition:transform .4s}
+.facts li:hover svg{transform:translateY(-3px) rotate(-4deg)}
+@media (prefers-reduced-motion:reduce){
+  .hero-copy>*,.proof>*,.hdr,.hdr.solid{animation:none}
+  html.anim [data-reveal],html.anim [data-reveal] img{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}
+}
+</style>
+<style>
+.demo-bar{position:relative;z-index:70;background:#E9E3C8;color:#1C2823;font:500 12px/1.3 "Schibsted Grotesk",Arial,sans-serif;text-align:center;padding:8px max(16px,env(safe-area-inset-left,0px));padding-top:calc(8px + env(safe-area-inset-top,0px))}
+.hdr:not(.solid){top:calc(env(safe-area-inset-top,0px) + 32px)}
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">Entwurf von Oquíron Digital · keine offizielle Website des Gästehaus Koller · Draft, not the official website</div>
+
+
+<header class="hdr gutter" id="hdr">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Gästehaus Koller, Startseite">
+      <b>Gästehaus Koller</b>
+      <span>Appenzell</span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#zimmer" data-i18n="nav_rooms">Zimmer</a>
+      <a href="#fruehstueck" data-i18n="nav_breakfast">Frühstück</a>
+      <a href="#gastgeber" data-i18n="nav_hosts">Gastgeber</a>
+      <a href="#lage" data-i18n="nav_location">Lage</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Sprache">
+      <button type="button" id="lang-de" aria-pressed="true" data-lang="de">DE</button>
+      <button type="button" id="lang-en" aria-pressed="false" data-lang="en">EN</button>
+    </div>
+    <a class="btn btn-go" href="#kontakt" data-i18n="cta_short">Anfragen</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-img">
+      <img src="img/fassade.webp" width="1280" height="853" fetchpriority="high"
+        alt="Verzierte Holzfassade des Gästehaus Koller mit Schweizer und Appenzeller Fahne und roten Geranien" data-i18n-alt="hero_alt">
+    </div>
+    <div class="hero-in gutter">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="eyebrow">Bed &amp; Breakfast · Familie Koller</p>
+          <h1 data-i18n="h1">Vier Zimmer aus Altholz und Lehm, zehn Minuten vom Dorfkern.</h1>
+          <p class="lead" data-i18n="lead">Ruhig gelegen an der Eggerstandenstrasse. Jedes Zimmer mit eigenem Bad, dazu ein reichhaltiges Frühstücksbuffet mit Produkten aus der Region.</p>
+          <div class="cta-row">
+            <a class="btn btn-go" href="#kontakt">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg>
+              <span data-i18n="cta_main">Verfügbarkeit anfragen</span>
+            </a>
+            <a class="btn btn-ghost" href="#zimmer" data-i18n="cta_rooms">Zimmer ansehen</a>
+          </div>
+          <p class="price"><span data-i18n="price_pre">Doppelzimmer ab</span> <strong>CHF 130</strong> <span data-i18n="price_post">pro Nacht, Frühstück inklusive</span></p>
+        </div>
+
+        <div class="proof" aria-label="Bewertungen">
+          <div class="tile">
+            <div class="num">5.0 <span class="stars" aria-hidden="true">★★★★★</span></div>
+            <div class="lbl"><b>Google</b> · <span data-i18n="n24">24 Bewertungen</span></div>
+          </div>
+          <a class="tile" href="https://www.tripadvisor.ch/Hotel_Review-g667654-d7159446-Reviews-Gaestehaus_Koller-Appenzell_Canton_of_Appenzell.html" target="_blank" rel="noopener">
+            <div class="num">4.8 <span class="stars" aria-hidden="true">★★★★★</span></div>
+            <div class="lbl"><b>Tripadvisor</b> · <span data-i18n="n12">12 Bewertungen</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="facts gutter" aria-label="Auf einen Blick">
+    <ul class="wrap">
+      <li>
+        <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 15h20v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-3Z"/><path d="M7 15V6a2.5 2.5 0 0 1 5 0"/><path d="M9 23l-1 2.5M19 23l1 2.5"/></svg>
+        <div><b data-i18n="f1">Eigenes Bad</b><span data-i18n="f1s">in allen 4 Zimmern</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M5 13h15v4a6 6 0 0 1-6 6h-3a6 6 0 0 1-6-6v-4Z"/><path d="M20 14h1.5a2.5 2.5 0 0 1 0 5H19.5"/><path d="M9 4.5c0 1.5 1.5 1.5 1.5 3S9 9 9 10.5M14 4.5c0 1.5 1.5 1.5 1.5 3S14 9 14 10.5"/></svg>
+        <div><b data-i18n="f2">Frühstücksbuffet</b><span data-i18n="f2s">im Preis inbegriffen</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="4" y="4" width="20" height="20" rx="4"/><path d="M11 20V8h4.5a3.5 3.5 0 0 1 0 7H11"/></svg>
+        <div><b data-i18n="f3">Parkplatz &amp; WLAN</b><span data-i18n="f3s">kostenlos</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M3 22l7-12 4 6 3-4 8 10H3Z"/><circle cx="20" cy="7" r="2.5"/></svg>
+        <div><b data-i18n="f4">Appenzeller Ferienkarte</b><span data-i18n="f4s">ab 3 Nächten, über 20 Gratisangebote</span></div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ ANKOMMEN ============ -->
+  <section class="sec arrive gutter" id="ankommen">
+    <div class="wrap arrive-grid">
+      <figure class="ph a1"><img src="img/schild.webp" width="1280" height="853" loading="lazy" alt="Holzschild im Garten mit der Aufschrift «Gästehaus Koller, Cholles Bett ond Zmoge»"></figure>
+      <div class="arrive-copy">
+        <p class="eyebrow" data-i18n="ar_eyebrow">Ankommen</p>
+        <h2>«Cholles Bett ond Zmoge»</h2>
+        <p class="body" data-i18n="ar_p">So steht es auf dem Schild im Garten, auf Appenzellerdeutsch: Kollers Bett und Frühstück. Geranien an jedem Fenster, an der Zimmertür ein Schloss aus Schmiedeeisen. Ab hier haben Sie Ferien.</p>
+      </div>
+      <div class="arrive-small">
+        <figure class="ph"><img src="img/geranien.webp" width="1280" height="853" loading="lazy" alt="Rote und rosa Geranien in voller Blüte"></figure>
+        <figure class="ph"><img src="img/schloss.webp" width="1280" height="850" loading="lazy" alt="Handgeschmiedetes Türschloss an einer Zimmertür aus Holz"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GASTGEBER ============ -->
+  <section class="sec hosts gutter" id="gastgeber" style="padding-top:0">
+    <div class="wrap">
+      <figure>
+        <img src="img/schluessel.webp" width="1280" height="850" loading="lazy" alt="Zimmerschlüssel mit kleinem Senntumsschuh-Anhänger an einer Holztür" data-i18n-alt="alt_key">
+        <figcaption data-i18n="cap_key">Jede Zimmertür hat ihr eigenes Schmiedeeisen.</figcaption>
+      </figure>
+      <div class="hosts-copy">
+        <p class="eyebrow" data-i18n="h_eyebrow">Ihre Gastgeber</p>
+        <h2 data-i18n="h_h2">Karin aus Urnäsch, Stefan aus Innerrhoden. Unter einem Dach.</h2>
+        <p class="body" data-i18n="h_p1">2017 haben wir das Gästehaus von Stefans Eltern übernommen und seither alle Zimmer renoviert. Stefan hat viel Liebe zum Detail ins Altholz gesteckt, Lehmwände und Eichenparkett machen die Zimmer heimelig und trotzdem modern.</p>
+        <p class="body" data-i18n="h_p2">Wir singen und jodeln beide gern und verraten Ihnen (fast) alle Unterschiede zwischen Ausser- und Innerrhoden. Karin näht Trachten und Edelweisshemden: Wer länger als drei Tage bleibt, kann mit etwas Glück ein eigenes, massgeschneidertes Hemd mit nach Hause nehmen.</p>
+        <div class="since">
+          <div><b>2017</b><span data-i18n="h_s1">in zweiter Generation</span></div>
+          <div><b>4</b><span data-i18n="h_s2">renovierte Zimmer</span></div>
+          <div><b>784</b><span data-i18n="h_s3">Meter über Meer</span></div>
+        </div>
+        <p class="greet">Sönd wöllkomm!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ZIMMER ============ -->
+  <section class="sec gutter" id="zimmer" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow" data-i18n="z_eyebrow">Zimmer</p>
+          <h2 data-i18n="z_h2">Drei Doppelzimmer und ein Familienzimmer, alle mit eigenem Bad.</h2>
+        </div>
+        <p class="body" data-i18n="z_p">Holz aus der Region, Lehmputz und Eichenparkett. Jedes Zimmer hat Dusche/WC, Föhn, Flachbild-TV und WLAN. Familien mit ein bis zwei Kindern finden im Familienzimmer bequem Platz.</p>
+      </div>
+
+      <div class="reel" id="reel" tabindex="0" aria-label="Zimmerfotos">
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-k.webp" width="1280" height="850" loading="lazy" alt="Zimmer mit Doppelbett und zusätzlichem Bett, Holzbalken und Fenster"></button><figcaption data-i18n="s_zimmer-k">Platz für die ganze Familie</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-d.webp" width="1280" height="850" loading="lazy" alt="Doppelzimmer mit Holzdecke, Bett aus Massivholz und Blick ins Bad"></button><figcaption data-i18n="s_zimmer-d">Massivholzbett unter der Holzdecke</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-c.webp" width="1280" height="850" loading="lazy" alt="Doppelbett mit gepolstertem Kopfteil vor einer Altholzwand"></button><figcaption data-i18n="s_zimmer-c">Altholz, Lehm und Eichenparkett</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-l.webp" width="1280" height="850" loading="lazy" alt="Zimmer mit Tagesbett, Sessel und Doppelbett"></button><figcaption data-i18n="s_zimmer-l">Tagesbett am Fenster</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-g.webp" width="1280" height="850" loading="lazy" alt="Helles Dachzimmer mit Doppelbett und Holzbalken"></button><figcaption data-i18n="s_zimmer-g">Unter der Dachschräge</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-b.webp" width="1280" height="850" loading="lazy" alt="Dachzimmer mit Doppelbett, Schreibtisch und zwei Sesseln"></button><figcaption data-i18n="s_zimmer-b">Ein Tisch am Fenster</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/ecke.webp" width="1280" height="850" loading="lazy" alt="Leseecke mit Sitzsack und Holzkommode unter der Dachschräge"></button><figcaption data-i18n="s_ecke">Eine Ecke zum Lesen</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-j.webp" width="1280" height="850" loading="lazy" alt="Zimmer mit Doppelbett, Holzwänden und Sessel"></button><figcaption data-i18n="s_zimmer-j">Viel Licht, viel Holz</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-a.webp" width="1280" height="850" loading="lazy" alt="Zimmer unter der Dachschräge mit Doppelbett und Schiebetür zum Bad"></button><figcaption data-i18n="s_zimmer-a">Schiebetür zum eigenen Bad</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-i.webp" width="1280" height="850" loading="lazy" alt="Tisch mit Prospekten und Gästeinformationen, im Hintergrund das Bett"></button><figcaption data-i18n="s_zimmer-i">Tipps für Ihre Ausflüge</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-f.webp" width="1280" height="850" loading="lazy" alt="Holzwand mit Haken und Schlüssel, dahinter das Doppelbett"></button><figcaption data-i18n="s_zimmer-f">Haken für Jacke und Rucksack</figcaption></figure>
+        <figure class="slide"><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/zimmer-h.webp" width="1280" height="850" loading="lazy" alt="Doppelbett mit grauer Bettwäsche, vorne ein Schlüssel an der Tür"></button><figcaption data-i18n="s_zimmer-h">Gut schlafen in Appenzell</figcaption></figure>
+      </div>
+      <div class="reel-ctrl">
+        <span class="count" id="reel-count">1 / 12</span>
+        <button type="button" class="arrow" id="reel-prev" aria-label="Vorheriges Foto"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+        <button type="button" class="arrow" id="reel-next" aria-label="Nächstes Foto"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg></button>
+      </div>
+
+      <div class="baths">
+        <div class="baths-copy">
+          <h3 data-i18n="bt_h">Jedes Zimmer mit eigenem Bad</h3>
+          <p class="body" data-i18n="bt_p">Neu renoviert, mit Dusche, WC, Föhn und frischen Tüchern.</p>
+        </div>
+        <figure><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/bad-4.webp" width="850" height="1280" loading="lazy" alt="Bad mit Glasdusche, Handtuchheizkörper und WC"></button></figure>
+        <figure><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/bad-5.webp" width="834" height="1280" loading="lazy" alt="Bad unter der Holzdecke mit Dusche, Lavabo und Spiegel im Holzrahmen"></button></figure>
+        <figure><button type="button" data-lb aria-label="Foto vergrössern"><img src="img/bad-6.webp" width="850" height="1280" loading="lazy" alt="Modernes Bad mit Dusche, WC und grossem Lavabo"></button></figure>
+      </div>
+      <div class="rooms-grid">
+        <div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th data-i18n="t_room">Zimmer</th><th data-i18n="t_beds">Betten</th><th class="r" data-i18n="t_size">Grösse</th><th class="r" data-i18n="t_pers">Personen</th></tr></thead>
+              <tbody>
+                <tr><td data-i18n="r1">Familienzimmer</td><td data-i18n="r1b">Doppel- und Einzelbett</td><td class="r">22 m²</td><td class="r">1–4</td></tr>
+                <tr><td data-i18n="r2">Doppelzimmer</td><td data-i18n="rdb">Doppelbett</td><td class="r">18 m²</td><td class="r">1–2</td></tr>
+                <tr><td data-i18n="r3">Doppelzimmer</td><td data-i18n="rdb2">Doppelbett</td><td class="r">18 m²</td><td class="r">1–2</td></tr>
+                <tr><td data-i18n="r4">Doppelzimmer</td><td data-i18n="rdb3">Doppelbett</td><td class="r">15 m²</td><td class="r">1–2</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="chips">
+            <li data-i18n="a1">Dusche/WC</li><li data-i18n="a2">Föhn</li><li data-i18n="a3">Flachbild-TV</li><li data-i18n="a4">WLAN</li><li data-i18n="a5">Eigener Eingang</li><li data-i18n="a6">Nichtraucher</li><li data-i18n="a7">Kinderbett auf Anfrage</li>
+          </ul>
+        </div>
+        <aside class="pricebox" aria-label="Preise">
+          <p class="eyebrow" style="margin:0;color:var(--holz)" data-i18n="p_eyebrow">Wintersaison Nov 2026 – März 2027</p>
+          <div class="big">CHF 130<small data-i18n="p_unit">pro Nacht, Doppelzimmer</small></div>
+          <ul>
+            <li><span data-i18n="p_l1">Doppelzimmer ab</span><span>CHF 130</span></li>
+            <li><span data-i18n="p_l2">Einzelbelegung ab</span><span>CHF 90</span></li>
+            <li><span data-i18n="p_l3">Familienzimmer</span><span data-i18n="p_l3v">je nach Personen</span></li>
+          </ul>
+          <p class="note" data-i18n="p_note">Inbegriffen: Frühstücksbuffet, WLAN, Parkplatz. Kurtaxe CHF 2.50 pro Person und Nacht ab 17 Jahren. Haustiere sind leider nicht erlaubt.</p>
+          <a class="btn btn-go" href="#kontakt" data-i18n="cta_main">Verfügbarkeit anfragen</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRÜHSTÜCK ============ -->
+  <section class="sec bf gutter" id="fruehstueck">
+    <div class="wrap bf-wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow" data-i18n="b_eyebrow">Frühstück</p>
+          <h2 data-i18n="b_h2">Der Tag beginnt in der Stube oder auf der Terrasse.</h2>
+        </div>
+        <div class="bf-copy">
+          <p class="body" data-i18n="b_p">Unser Frühstücksbuffet ist im Zimmerpreis inbegriffen. Bei schönem Wetter frühstücken Sie draussen. Die Stube steht Ihnen auch am Abend offen.</p>
+          <ul class="bf-list">
+            <li data-i18n="b_l1">Frisches Brot, Zopf und Gipfeli</li>
+            <li data-i18n="b_l2">Hausgemachtes Birchermüesli und frische Früchte</li>
+            <li data-i18n="b_l3">Appenzeller Käse und Produkte aus der Region</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bf-grid">
+        <img src="img/zopf.webp" width="1280" height="850" loading="lazy" alt="Hände schneiden einen frischen Zopf, daneben ein Korb mit Gipfeli und Brot">
+        <img src="img/fruehstueck.webp" width="1280" height="850" loading="lazy" alt="Frühstücksstube mit Appenzeller Holzstühlen, gedeckten Tischen und Dachfenster">
+        <img src="img/aufschnitt.webp" width="1280" height="850" loading="lazy" alt="Schieferplatte mit Käse, Schinken und Rohschinken, dahinter Konfitüre">
+        <img src="img/dosen.webp" width="1280" height="850" loading="lazy" alt="Rote Teedosen mit Kreideetiketten auf einem Holzregal">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TERRASSE (Bildband) ============ -->
+  <section class="band" aria-label="Terrasse">
+    <img src="img/terrasse.webp" width="1280" height="853" loading="lazy" alt="Paar beim Frühstück auf der sonnigen Terrasse vor dem Gästehaus">
+    <div class="band-q gutter">
+      <div class="wrap">
+        <blockquote data-i18n="band_q">«Diese Unterkunft war eine der schönsten.»</blockquote>
+        <p data-i18n="band_c">Claudia R., 40 Tage mit dem Velo durch die Schweiz · Google</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BEWERTUNGEN ============ -->
+  <section class="sec gutter" id="bewertungen">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow" data-i18n="v_eyebrow">Bewertungen</p>
+          <h2 data-i18n="v_h2">Was unsere Gäste schreiben.</h2>
+        </div>
+        <p class="body" data-i18n="v_p">Echte Bewertungen von Google und Tripadvisor im Wortlaut. Alle 24 Google-Bewertungen geben fünf Sterne.</p>
+      </div>
+      <div class="rv-grid">
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Google</span></div>
+          <blockquote data-i18n="g1">Wir waren mit dem Fahrrad 40 Tage in der Schweiz unterwegs. Diese Unterkunft war eine der schönsten. Ein herzlicher Empfang, sehr geschmackvoll eingerichtete Zimmer, ein liebevoll gerichtetes Frühstück, unter anderem mit selbst gemachtem Müsli und frischen Früchten.</blockquote>
+          <figcaption><b>Claudia R.</b> · <span data-i18n="o_g1">Google-Rezension</span> · 07/2026<span class="tr" data-i18n="tr_g1"></span></figcaption></figure>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Tripadvisor</span></div>
+          <blockquote data-i18n="t1">Ich habe hier so gut geschlafen, mit dem Klang der Kuhglocken vor dem Fenster und den sanften Hügeln ringsum. Nachts war es sehr ruhig, und mit nur vier Zimmern fühlte es sich schön und persönlich an.</blockquote>
+          <figcaption><b>H. C.</b> · <span data-i18n="o_t1">Charleston, USA</span> · 06/2024<span class="tr" data-i18n="tr_t1"> · aus dem Englischen übersetzt</span></figcaption></figure>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Google</span></div>
+          <blockquote data-i18n="g2">Freundliche Begrüssung mit einem Appenzeller, sehr angenehme Zimmer und ein ausgewogenes Frühstück! Wir können die Unterkunft sehr empfehlen.</blockquote>
+          <figcaption><b>Roger H.</b> · <span data-i18n="o_g2">Google-Rezension</span> · 10/2026<span class="tr" data-i18n="tr_g2"></span></figcaption></figure>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Tripadvisor</span></div>
+          <blockquote data-i18n="t2">Eine liebevoll hergerichtete stilvolle Unterkunft zum Wohlfühlen. Das Frühstück war ausgezeichnet, abwechslungsreich, gesund und mit allem, was man sich wünscht. Perfektes selbstgemachtes Müsli!!!</blockquote>
+          <figcaption><b>Jörg T.</b> · <span data-i18n="o_t2">Rotenburg an der Fulda, Deutschland</span> · 09/2026<span class="tr" data-i18n="tr_t2"></span></figcaption></figure>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Tripadvisor</span></div>
+          <blockquote data-i18n="t3">Karin und Stefan sind wunderbare Gastgeber! Unser Zimmer war sauber, hell und gemütlich, mit einem wunderbaren Bett und schöner Aussicht. Auch das Frühstück war köstlich. Wir kommen bestimmt wieder.</blockquote>
+          <figcaption><b>Lynn W.</b> · <span data-i18n="o_t3">Arizona, USA</span> · 07/2025<span class="tr" data-i18n="tr_t3"> · aus dem Englischen übersetzt</span></figcaption></figure>
+        <figure class="rv"><div class="sc"><span class="stars" aria-label="5/5">★★★★★</span><span class="src">Google</span></div>
+          <blockquote data-i18n="g3">Sehr freundlich, sehr sauber und toll eingerichtet, das Frühstück war auch sehr lecker. «mhhhh das Birchermüesli» Sehr gerne wieder.</blockquote>
+          <figcaption><b>Beat K.</b> · <span data-i18n="o_g3">Google-Rezension</span> · 2025<span class="tr" data-i18n="tr_g3"></span></figcaption></figure>
+      </div>
+      <div class="rv-sum">
+        <a href="https://share.google/jakTur1F478XE5AVr" target="_blank" rel="noopener"><span class="stars">★★★★★</span><b>5.0</b> Google · <span data-i18n="n24">24 Bewertungen</span></a>
+        <a href="https://www.tripadvisor.ch/Hotel_Review-g667654-d7159446-Reviews-Gaestehaus_Koller-Appenzell_Canton_of_Appenzell.html" target="_blank" rel="noopener"><b>4.8</b> Tripadvisor · <span data-i18n="n12">12 Bewertungen</span></a>
+        <a href="https://bnb.ch/en/bb-gaestehaus-koller-2473/" target="_blank" rel="noopener"><b>bnb.ch</b> · <span data-i18n="all">alle Bewertungen</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LAGE ============ -->
+  <section class="sec loc gutter" id="lage" style="padding-top:0">
+    <div class="wrap">
+      <div class="loc-copy">
+        <p class="eyebrow" data-i18n="l_eyebrow">Lage</p>
+        <h2 data-i18n="l_h2">Ruhige Wohnstrasse, zu Fuss ins Dorf.</h2>
+        <p class="body" data-i18n="l_p">Appenzell ist der ideale Ausgangspunkt für Wanderungen und Velotouren mit Blick auf den Alpstein. Ab drei Nächten erhalten Sie die Appenzeller Ferienkarte mit über 20 Gratisangeboten in der Region.</p>
+        <p style="margin:0;display:flex;gap:20px;flex-wrap:wrap">
+          <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Eggerstandenstrasse+9+9050+Appenzell" target="_blank" rel="noopener" data-i18n="l_map">In Google Maps öffnen</a>
+          <a class="link" href="https://www.appenzell.ch/en/accommodation/appenzeller-holiday-card.html" target="_blank" rel="noopener" data-i18n="l_card">Zur Ferienkarte</a>
+        </p>
+      </div>
+      <ul class="dist">
+        <li><b>10<small>min</small></b><span data-i18n="d1">zu Fuss zum Dorfkern<small>Hauptgasse, Restaurants, Läden</small></span></li>
+        <li><b>15<small>min</small></b><span data-i18n="d2">zu Fuss zum Bahnhof Appenzell<small>Appenzeller Bahnen</small></span></li>
+        <li><b>A1</b><span data-i18n="d3">mit dem Auto<small>Ausfahrt Gossau, dann Richtung Appenzell, Spital</small></span></li>
+        <li><b>P</b><span data-i18n="d4">Parkplatz beim Haus<small>kostenlos für Gäste</small></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ PRAKTISCHES ============ -->
+  <section class="sec faq gutter" id="praktisch">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow" data-i18n="x_eyebrow">Gut zu wissen</p>
+          <h2 data-i18n="x_h2">Anreise, Zahlung und Stornierung.</h2>
+        </div>
+      </div>
+      <div class="faq-grid">
+        <div>
+          <details><summary data-i18n="x1">Wann kann ich ein- und auschecken?</summary><p data-i18n="x1a">Check-in nach Absprache, Check-out bis 10:30 Uhr.</p></details>
+          <details><summary data-i18n="x2">Wie bezahle ich?</summary><p data-i18n="x2a">Per Vorauszahlung oder bar bei der Ankunft in Schweizer Franken.</p></details>
+          <details><summary data-i18n="x3">Was ist im Preis inbegriffen?</summary><p data-i18n="x3a">Frühstücksbuffet, WLAN und Parkplatz. Nicht inbegriffen ist die Kurtaxe von CHF 2.50 pro Person und Nacht ab 17 Jahren.</p></details>
+        </div>
+        <div>
+          <details><summary data-i18n="x4">Wie kann ich stornieren?</summary><p data-i18n="x4a">Bis 7 Tage vor Anreise kostenlos. Bis 1 Tag vorher 50 % des Gesamtbetrags, am Anreisetag oder bei Nichterscheinen 100 % (jeweils max. 3 Nächte pro Zimmer). Wir empfehlen eine Annullationsversicherung.</p></details>
+          <details><summary data-i18n="x5">Sind Haustiere erlaubt?</summary><p data-i18n="x5a">Nein, Haustiere sind bei uns leider nicht erlaubt.</p></details>
+          <details><summary data-i18n="x6">Gibt es Platz für Familien?</summary><p data-i18n="x6a">Ja. Im Familienzimmer schlafen bis zu vier Personen, ein Kinderbett für Kinder bis 2 Jahre stellen wir auf Anfrage bereit.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANFRAGE ============ -->
+  <section class="sec contact gutter" id="kontakt">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow" style="color:var(--holz)" data-i18n="c_eyebrow">Anfrage &amp; Kontakt</p>
+        <h2 data-i18n="c_h2">Schreiben oder rufen Sie uns an. Karin und Stefan antworten persönlich.</h2>
+        <div class="cards" style="margin-top:28px">
+          <div class="c-row">
+            <div><small data-i18n="c_phone">Telefon</small><span class="val" id="v-phone">+41 71 787 02 22</span></div>
+            <button class="copy" type="button" id="copy-phone" data-copy="+41 71 787 02 22" data-i18n="copy">Kopieren</button>
+          </div>
+          <div class="c-row">
+            <div><small data-i18n="c_mail">E-Mail</small><span class="val" id="v-mail">info@gaestehaus-koller.ch</span></div>
+            <button class="copy" type="button" id="copy-mail" data-copy="info@gaestehaus-koller.ch" data-i18n="copy">Kopieren</button>
+          </div>
+          <div class="c-row">
+            <div><small data-i18n="c_addr">Adresse</small><span class="val">Eggerstandenstrasse 9, 9050 Appenzell</span></div>
+          </div>
+        </div>
+      </div>
+      <form class="form" id="anfrage" novalidate>
+        <div class="field"><label for="f-in" data-i18n="f_in">Anreise</label><input id="f-in" name="anreise" type="date" required></div>
+        <div class="field"><label for="f-out" data-i18n="f_out">Abreise</label><input id="f-out" name="abreise" type="date" required></div>
+        <div class="field"><label for="f-pers" data-i18n="f_pers">Personen</label>
+          <select id="f-pers" name="personen"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+        <div class="field"><label for="f-room" data-i18n="f_room">Zimmer</label>
+          <select id="f-room" name="zimmer"><option value="dz" data-i18n="o_dz">Doppelzimmer</option><option value="fz" data-i18n="o_fz">Familienzimmer</option><option value="egal" data-i18n="o_any">Egal</option></select></div>
+        <div class="field"><label for="f-name" data-i18n="f_name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-mail" data-i18n="f_mail">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+        <div class="field full"><label for="f-msg" data-i18n="f_msg">Nachricht (optional)</label><textarea id="f-msg" name="nachricht"></textarea></div>
+        <button class="btn btn-go" type="submit" data-i18n="f_send">Anfrage senden</button>
+        <p class="form-msg" id="form-msg" hidden></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot gutter">
+  <div class="wrap">
+    <a class="mark" href="#top"><b>Gästehaus Koller</b><span>Appenzell</span></a>
+    <p>Eggerstandenstrasse 9 · 9050 Appenzell · +41 71 787 02 22</p>
+    <p class="legal"><span>Impressum</span><span data-i18n="privacy">Datenschutz</span></p>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Foto">
+  <img id="lb-img" alt="">
+  <button type="button" id="lb-close" data-i18n="close">Schliessen</button>
+  <div class="lb-nav"><button type="button" id="lb-prev" aria-label="Vorheriges Foto">←</button><button type="button" id="lb-next" aria-label="Nächstes Foto">→</button></div>
+</dialog>
+
+<nav class="mbar" aria-label="Schnellkontakt">
+  <a class="btn btn-call" href="tel:+41717870222">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 2h3l1.5 3.5-2 1.2a8 8 0 0 0 3.8 3.8l1.2-2L14 10v3a1 1 0 0 1-1 1A11 11 0 0 1 2 3a1 1 0 0 1 1-1Z"/></svg>
+    <span data-i18n="call">Anrufen</span>
+  </a>
+  <a class="btn btn-go" href="#kontakt" data-i18n="cta_short2">Anfragen</a>
+</nav>
+
+<script>
+(function(){
+  var T={
+    en:{nav_rooms:"Rooms",nav_breakfast:"Breakfast",nav_hosts:"Your hosts",nav_location:"Location",cta_short:"Enquire",cta_short2:"Enquire",
+      eyebrow:"Bed & Breakfast · The Koller family",
+      h1:"Four rooms of reclaimed wood and clay, ten minutes from the village.",
+      lead:"Quietly set on Eggerstandenstrasse. Every room has its own bathroom, and breakfast is a generous buffet with produce from the region.",
+      cta_main:"Check availability",cta_rooms:"See the rooms",price_pre:"Double room from",price_post:"per night, breakfast included",
+      n24:"24 reviews",n12:"12 reviews",quote:"Close to the centre, yet a quiet residential street. The breakfast buffet is very good too.",
+      f1:"Private bathroom",f1s:"in all 4 rooms",f2:"Breakfast buffet",f2s:"included in the price",f3:"Parking & WiFi",f3s:"free of charge",
+      f4:"Appenzell Holiday Card",f4s:"from 3 nights, 20+ free offers",
+      h_eyebrow:"Your hosts",h_h2:"Karin from Urnäsch, Stefan from Inner Rhodes. Under one roof.",
+      h_p1:"In 2017 we took over the guesthouse from Stefan's parents and have since renovated every room. Stefan put great care into the reclaimed wood; clay walls and oak parquet make the rooms cosy and still modern.",
+      h_p2:"We both love to sing and yodel, and we'll happily share (almost) all the differences between Outer and Inner Rhodes. Karin sews traditional costumes and Edelweiss shirts: stay longer than three days and, with a little luck, you can take home a made-to-measure shirt of your own.",
+      h_s1:"second generation",h_s2:"renovated rooms",h_s3:"metres above sea level",
+      cap_key:"Every room door has its own wrought iron.",alt_key:"Room key with a small Appenzell shoe charm on a wooden door",
+      z_eyebrow:"Rooms",z_h2:"Three double rooms and one family room, all with a private bathroom.",
+      z_p:"Local wood, clay plaster and oak parquet. Every room has shower/WC, hairdryer, flat-screen TV and WiFi. Families with one or two children have plenty of space in the family room.",
+      t_room:"Room",t_beds:"Beds",t_size:"Size",t_pers:"Guests",r1:"Family room",r1b:"Double and single bed",r2:"Double room",r3:"Double room",r4:"Double room",rdb:"Double bed",rdb2:"Double bed",rdb3:"Double bed",
+      a1:"Shower/WC",a2:"Hairdryer",a3:"Flat-screen TV",a4:"WiFi",a5:"Own entrance",a6:"Non-smoking",a7:"Cot on request",
+      p_eyebrow:"Winter season Nov 2026 – Mar 2027",p_unit:"per night, double room",p_l1:"Double room from",p_l2:"Single occupancy from",p_l3:"Family room",p_l3v:"by number of guests",
+      p_note:"Included: breakfast buffet, WiFi, parking. Tourist tax CHF 2.50 per person per night from age 17. Sorry, no pets.",
+      b_eyebrow:"Breakfast",b_h2:"The day starts in the parlour or on the terrace.",b_p:"Our breakfast buffet is included in the room rate. In good weather you can eat outside. The parlour is yours in the evening too.",
+      b_l1:"Fresh bread, Zopf and croissants",b_l2:"Homemade Bircher muesli and fresh fruit",b_l3:"Appenzeller cheese and regional produce",
+      v_eyebrow:"Reviews",v_h2:"What our guests write.",v_p:"Real reviews from Google and Tripadvisor, word for word. All 24 Google reviews give five stars.",
+      g1:"We spent 40 days cycling through Switzerland. This was one of the loveliest places we stayed. A warm welcome, very tastefully furnished rooms and a lovingly prepared breakfast, including homemade muesli and fresh fruit.",t1:"I slept so well here with the sound of cowbells out the window and rolling hills surrounding me. It was very quiet at night and with only four bedrooms it felt lovely and personal.",g2:"A friendly welcome with an Appenzeller, very pleasant rooms and a well-balanced breakfast! We highly recommend this place.",t2:"A lovingly prepared, stylish place to feel at home. Breakfast was excellent, varied, healthy and had everything you could wish for. Perfect homemade muesli!!!",t3:"Karin and Stefan are wonderful hosts! Our room was clean, bright, and comfortable with a wonderful bed and bedding and lovely view. Breakfast was also delicious. We will absolutely stay here again!",g3:"Very friendly, very clean and beautifully furnished, and breakfast was delicious too. “Mmmh, the Bircher muesli.” Would love to come back.",o_g1:"Google review",o_g2:"Google review",o_g3:"Google review",o_t1:"Charleston, USA",o_t2:"Rotenburg an der Fulda, Germany",o_t3:"Arizona, USA",tr_g1:" · translated from German",tr_g2:" · translated from German",tr_g3:" · translated from German",tr_t1:"",tr_t2:" · translated from German",tr_t3:"",
+      all:"all reviews",
+      l_eyebrow:"Location",l_h2:"A quiet street, a short walk into the village.",l_p:"Appenzell is the ideal base for hikes and bike tours with views of the Alpstein. Stay three nights or more and you receive the Appenzell Holiday Card with over 20 free offers in the region.",
+      l_map:"Open in Google Maps",cap_park:"Your parking space right by the house.",ar_eyebrow:"Arriving",ar_p:"That\u2019s what the sign in the garden says, in Appenzell dialect: Koller\u2019s bed and breakfast. Geraniums at every window, a wrought-iron lock on your door. From here on, you\u2019re on holiday.","s_zimmer-k":"Room for the whole family","s_zimmer-d":"Solid wood bed under a timber ceiling","s_zimmer-c":"Reclaimed wood, clay and oak","s_zimmer-l":"A daybed by the window","s_zimmer-g":"Under the sloping roof","s_zimmer-b":"A table by the window",s_ecke:"A corner for reading","s_zimmer-j":"Plenty of light, plenty of wood","s_zimmer-a":"A sliding door to your own bathroom","s_zimmer-i":"Tips for your outings","s_zimmer-f":"Pegs for jacket and backpack","s_zimmer-h":"Sleeping well in Appenzell",bt_h:"Every room has its own bathroom",bt_p:"Newly renovated, with shower, WC, hairdryer and fresh towels.",band_q:"\u201cThis was one of the loveliest places we stayed.\u201d",band_c:"Claudia R., 40 days cycling through Switzerland \u00b7 Google",l_card:"About the Holiday Card",
+      d1:"walk to the village centre<small>Hauptgasse, restaurants, shops</small>",d2:"walk to Appenzell station<small>Appenzell Railways</small>",d3:"by car<small>Exit Gossau, then towards Appenzell, hospital</small>",d4:"parking at the house<small>free for guests</small>",
+      x_eyebrow:"Good to know",x_h2:"Arrival, payment and cancellation.",
+      x1:"When can I check in and out?",x1a:"Check-in by arrangement, check-out by 10:30.",x2:"How do I pay?",x2a:"By prepayment or in cash on arrival, in Swiss francs.",
+      x3:"What is included?",x3a:"Breakfast buffet, WiFi and parking. Not included: tourist tax of CHF 2.50 per person per night from age 17.",
+      x4:"How can I cancel?",x4a:"Free up to 7 days before arrival. Up to 1 day before, 50% of the total; on the day of arrival or no-show, 100% (max. 3 nights per room). We recommend cancellation insurance.",
+      x5:"Are pets allowed?",x5a:"No, unfortunately pets are not allowed.",x6:"Is there room for families?",x6a:"Yes. The family room sleeps up to four, and we provide a cot for children up to 2 on request.",
+      c_eyebrow:"Enquiries & contact",c_h2:"Write or call us. Karin and Stefan reply personally.",
+      c_phone:"Phone",c_mail:"Email",c_addr:"Address",copy:"Copy",copied:"Copied",call:"Call",
+      f_in:"Arrival",f_out:"Departure",f_pers:"Guests",f_room:"Room",o_dz:"Double room",o_fz:"Family room",o_any:"No preference",f_name:"Name",f_mail:"Email",f_msg:"Message (optional)",f_send:"Send enquiry",
+      privacy:"Privacy",close:"Close",
+      msg_missing:"Please fill in arrival, departure, name and email.",msg_dates:"Departure must be after arrival.",
+      msg_ok:"Preview only: in the live website this enquiry goes straight to info@gaestehaus-koller.ch.",
+      hero_alt:"Ornamented wooden facade of Gästehaus Koller with the Swiss and Appenzell flags and red geraniums"},
+    de:{copied:"Kopiert",msg_missing:"Bitte Anreise, Abreise, Name und E-Mail ausfüllen.",msg_dates:"Die Abreise muss nach der Anreise liegen.",
+      msg_ok:"Vorschau: Auf der fertigen Website geht diese Anfrage direkt an info@gaestehaus-koller.ch."}
+  };
+  var nodes=[].slice.call(document.querySelectorAll("[data-i18n]"));
+  nodes.forEach(function(n){T.de[n.getAttribute("data-i18n")]=n.innerHTML});
+  var alts=[].slice.call(document.querySelectorAll("[data-i18n-alt]"));
+  alts.forEach(function(n){T.de[n.getAttribute("data-i18n-alt")]=n.alt});
+  var cur="de";
+  function setLang(l){
+    cur=l;document.documentElement.lang=l;
+    nodes.forEach(function(n){var k=n.getAttribute("data-i18n");var v=T[l][k];if(v==null)return;
+      if(l==="en"&&/<small>/.test(T.de[k])&&!/<small>/.test(v)){var sm=T.de[k].match(/<small>.*<\/small>/);n.innerHTML=v+(sm?sm[0]:"")}else{n.innerHTML=v}});
+    alts.forEach(function(n){var v=T[l][n.getAttribute("data-i18n-alt")];if(v)n.alt=v});
+    document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.lang===l)});
+    var m=document.getElementById("form-msg");if(!m.hidden&&m.dataset.k)m.textContent=T[l][m.dataset.k];
+    try{localStorage.setItem("koller-lang",l)}catch(e){}
+  }
+  document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.lang)})});
+  document.documentElement.lang="de";
+  try{var s=localStorage.getItem("koller-lang");if(s==="en")setLang("en")}catch(e){}
+
+  document.querySelectorAll(".copy").forEach(function(b){
+    b.addEventListener("click",function(){
+      var v=b.dataset.copy;
+      function done(){b.textContent=T[cur].copied;setTimeout(function(){b.textContent=T[cur].copy},1600)}
+      function sel(){var el=b.parentNode.querySelector(".val");var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(done,sel)}else{sel()}
+    });
+  });
+
+  // Formular (Vorschau: kein Versand)
+  var f=document.getElementById("anfrage"),msg=document.getElementById("form-msg");
+  var today=new Date().toISOString().slice(0,10);f.elements.anreise.min=today;f.elements.abreise.min=today;
+  f.addEventListener("submit",function(e){
+    e.preventDefault();var k;
+    var a=f.elements.anreise.value,b=f.elements.abreise.value;
+    if(!a||!b||!f.elements.name.value.trim()||!f.elements.email.value.trim())k="msg_missing";
+    else if(b<=a)k="msg_dates";else k="msg_ok";
+    msg.dataset.k=k;msg.textContent=T[cur][k];msg.hidden=false;
+  });
+
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Lightbox mit Blättern
+  var lb=document.getElementById("lb"),lbi=document.getElementById("lb-img"),pics=[].slice.call(document.querySelectorAll("[data-lb] img")),cur_i=0;
+  function show(i){cur_i=(i+pics.length)%pics.length;lbi.src=pics[cur_i].src;lbi.alt=pics[cur_i].alt}
+  pics.forEach(function(im,i){im.parentNode.addEventListener("click",function(){show(i);if(lb.showModal)lb.showModal()})});
+  document.getElementById("lb-close").addEventListener("click",function(){lb.close()});
+  document.getElementById("lb-prev").addEventListener("click",function(){show(cur_i-1)});
+  document.getElementById("lb-next").addEventListener("click",function(){show(cur_i+1)});
+  lb.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")show(cur_i-1);if(e.key==="ArrowRight")show(cur_i+1)});
+  lb.addEventListener("click",function(e){if(e.target===lb)lb.close()});
+
+  // Zimmer-Reel
+  var reelEl=document.getElementById("reel"),slidesEl=[].slice.call(reelEl.children),cnt=document.getElementById("reel-count");
+  function idx(){var x=reelEl.scrollLeft,best=0,d=1e9;slidesEl.forEach(function(sl,i){var dd=Math.abs(sl.offsetLeft-reelEl.offsetLeft-x);if(dd<d){d=dd;best=i}});return best}
+  function go(i){i=Math.max(0,Math.min(slidesEl.length-1,i));reelEl.scrollTo({left:slidesEl[i].offsetLeft-reelEl.offsetLeft,behavior:reduce?"auto":"smooth"})}
+  document.getElementById("reel-prev").addEventListener("click",function(){go(idx()-1)});
+  document.getElementById("reel-next").addEventListener("click",function(){go(idx()+1)});
+  reelEl.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();go(idx()+1)}if(e.key==="ArrowLeft"){e.preventDefault();go(idx()-1)}});
+  var rt;reelEl.addEventListener("scroll",function(){clearTimeout(rt);rt=setTimeout(function(){cnt.textContent=(idx()+1)+" / "+slidesEl.length},60)},{passive:true});
+
+  // ---------- Bewegung ----------
+  if(!reduce&&"IntersectionObserver" in window){
+    var groups=[
+      [".facts li",90,""],[".arrive .ph",120,"img"],[".arrive-copy>*",90,""],[".hosts figure",0,"img"],[".hosts-copy>*",80,""],
+      ["#zimmer .sec-head>*",90,""],[".slide",90,""],[".baths figure",100,"img"],[".baths-copy",0,""],["#zimmer table tbody tr",70,""],[".chips li",40,""],[".pricebox",0,""],
+      [".bf-copy>*",90,""],[".bf-grid img",110,""],[".band-q .wrap>*",120,""],
+      ["#bewertungen .sec-head>*",90,""],[".rv",90,""],[".rv-sum a",70,""],
+      [".loc-copy>*",90,""],[".dist li",90,""],
+      ["#praktisch .sec-head>*",0,""],["details",60,""],
+      ["#kontakt .wrap>div>*",90,""],[".c-row",80,""],[".form",0,""]
+    ];
+    var els=[];
+    groups.forEach(function(g){[].forEach.call(document.querySelectorAll(g[0]),function(el,i){
+      el.setAttribute("data-reveal",g[2]==="img"?"img":"");el.style.setProperty("--d",(i*g[1])+"ms");els.push(el)})});
+    document.documentElement.classList.add("anim");
+    var seen=false;
+    var io=new IntersectionObserver(function(es){seen=true;es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("is-in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px",threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+    setTimeout(function(){if(!seen)els.forEach(function(el){el.classList.add("is-in")})},1500);
+
+    // Zahlen hochzählen
+    var nums=[].slice.call(document.querySelectorAll(".since b,.dist b"));
+    var nio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;nio.unobserve(e.target);
+      var el=e.target,node=el.firstChild;if(!node||node.nodeType!==3)return;var end=parseInt(node.nodeValue,10);if(isNaN(end))return;
+      var start=end>1000?end-40:0,t0=null;function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1400);k=1-Math.pow(1-k,3);
+        node.nodeValue=String(Math.round(start+(end-start)*k));if(k<1)requestAnimationFrame(step)}requestAnimationFrame(step)})},{threshold:.6});
+    nums.forEach(function(n){nio.observe(n)});
+
+    // Parallax
+    var heroImg=document.querySelector(".hero-img img"),bandImg=document.querySelector(".band img"),ticking=false;
+    function par(){ticking=false;var y=scrollY,h=innerHeight;
+      if(y<h*1.2)heroImg.style.transform="translateY("+Math.min(y*.12,60)+"px) scale(1.14)";
+      var br=bandImg.parentNode.getBoundingClientRect();if(br.bottom>0&&br.top<h){var c=(br.top+br.height/2-h/2)/h;bandImg.style.transform="translateY("+(c*-9)+"%)"}}
+    heroImg.addEventListener("animationend",function(){heroImg.style.animation="none";heroImg.style.transition="transform .2s linear";addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(par)}},{passive:true});par()});
+  }
+
+  var hdr=document.getElementById("hdr"),hero=document.querySelector(".hero");
+  function onScroll(){hdr.classList.toggle("solid",window.scrollY>hero.offsetHeight-90)}
+  addEventListener("scroll",onScroll,{passive:true});onScroll();
+})();
+</script>
+
+</body>
+</html>
